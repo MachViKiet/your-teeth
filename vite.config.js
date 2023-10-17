@@ -11,5 +11,5 @@ export default defineConfig({
       { find: '~', replacement: '/src' }
     ]
   },
-  base: '/my-teeth/'
+  base: '/your-teeth/'
 })
