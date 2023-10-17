@@ -80,8 +80,8 @@ function LogInForm() {
         </Button>
         <Grid container>
           <Grid item xs>
-            <Link component={RouterLink} to="/">
-                    Forgot password?
+            <Link component={RouterLink} to="/your-teeth">
+                    Back
             </Link>
           </Grid>
           <Grid item>
