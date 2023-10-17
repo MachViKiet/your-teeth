@@ -1,0 +1,17 @@
+/* eslint-disable no-unused-vars */
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import theme from './theme'
+import { BrowserRouter } from 'react-router-dom'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <CssVarsProvider theme={theme}>
+      <CssBaseline />
+      <App />
+    </CssVarsProvider >
+  </BrowserRouter>
+)
