@@ -1,7 +1,11 @@
+import Header from '~/components/header/header'
 
 function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <>
+      <Header></Header>
+
+    </>
   )
 }
 
