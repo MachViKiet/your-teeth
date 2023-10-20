@@ -5,13 +5,15 @@ import Button from '@mui/material/Button'
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined'
 import { Link as RouterLink } from 'react-router-dom'
 import Logo from '~/components/Logo'
+import SlideDrawer from '~/components/Home/SlideBar/SlideDrawer'
 
 const STYLE_BUTTON = {
   color: '#000',
   textTransform: 'capitalize',
   '&.MuiButtonBase-root:hover':{
     color: '#1976d2'
-  }
+  },
+  width: '100%'
 }
 
 const STYLE_ICON = {
@@ -26,6 +28,7 @@ const STYLE_ICON = {
 }
 
 function Header() {
+
   return (
     <Box sx = {{
       height: '100px',
@@ -51,9 +54,7 @@ function Header() {
           alignItems:'center',
           justifyContent: 'space-between'
         }}>
-
           <Logo/>
-
           <Typography variant="h5" component="h3"
             sx = {{
               pl: '10px',
@@ -65,7 +66,10 @@ function Header() {
 
         {/* NavBar */}
         <Box sx = {{
-          display:'flex',
+          display: {
+            xs: 'none',
+            md: 'flex'
+          },
           alignItems:'center',
           justifyContent: 'space-between'
         }}
@@ -98,6 +102,8 @@ function Header() {
           </Tooltip>
 
         </Box>
+
+        <SlideDrawer />
 
       </Container>
 

@@ -124,6 +124,7 @@ function BookingForm(progs) {
         </Box>
 
       </DialogContent>
+
       <DialogActions>
         <Button autoFocus onClick={progs.func.handleClose}>
             Booking

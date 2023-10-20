@@ -11,6 +11,7 @@ import SchoolIcon from '@mui/icons-material/School'
 import BusinessIcon from '@mui/icons-material/Business'
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone'
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid'
+import { Link as RouterLink } from 'react-router-dom'
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -112,9 +113,12 @@ function Header() {
               <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYN0EZQKMCQZhcR95Wneiboh9Mn6IX1PFOAQ&usqp=CAU" />
             </StyledBadge>
 
-            <Button sx = {{
-              ml: 1
-            }} variant="outline">Sign out</Button>
+            <Button
+              component={RouterLink}
+              to="/your-teeth"
+              sx = {{
+                ml: 1
+              }} variant="outline">Sign out</Button>
           </Box>
 
         </Container>
@@ -132,62 +136,39 @@ function Header() {
           sx = {{
             display:'flex',
             alignItems:'center',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            overflowX: 'auto',
+            maxWidth: '100%',
+            overflowY: 'hidden',
+            p: '5px 0px',
+            '&::-webkit-scrollbar': {
+              height: '0px'
+            }
           }}>
-          {/* Your birth */}
-          <Box sx ={{
-            display:'flex',
-            alignItems:'center',
-            gap: 1
-          }}>
-            <CalendarMonthIcon />
-            <Typography>  01/May/1960</Typography>
-          </Box>
-          {/* Mobile phone */}
-          <Box sx ={{
-            display:'flex',
-            alignItems:'center',
-            gap: 1
-          }}>
-            <PhoneAndroidIcon />
-            <Typography>041-123-123</Typography>
-          </Box>
-          {/* Home phone */}
-          <Box sx ={{
-            display:'flex',
-            alignItems:'center',
-            gap: 1
-          }}>
-            <LocalPhoneIcon />
-            <Typography> Home phone</Typography>
-          </Box>
-          {/* University */}
-          <Box sx ={{
-            display:'flex',
-            alignItems:'center',
-            gap: 1
-          }}>
-            <SchoolIcon />
-            <Typography> University of Science</Typography>
-          </Box>
-          {/* Level */}
-          <Box sx ={{
-            display:'flex',
-            alignItems:'center',
-            gap: 1
-          }}>
-            <AttachMoneyIcon />
-            <Typography>CP Alliance Health fee level</Typography>
-          </Box>
-          {/* Address */}
-          <Box sx ={{
-            display:'flex',
-            alignItems:'center',
-            gap: 1
-          }}>
-            <BusinessIcon />
-            <Typography>35, Nguyen Van Cu</Typography>
-          </Box>
+
+          {[{ key: '01/May/1960', icon: <CalendarMonthIcon /> },
+            { key: '041-123-123', icon: <PhoneAndroidIcon /> },
+            { key: 'Home phone', icon: <LocalPhoneIcon /> },
+            { key: 'University of Science', icon: <SchoolIcon /> },
+            { key: '50/hour', icon: <AttachMoneyIcon /> },
+            { key: '35, Nguyen Van Cu', icon: <BusinessIcon /> }].map((inf) => {
+
+            return (
+              <>
+                <Box sx ={{
+                  display:'flex',
+                  alignItems:'center',
+                  gap: 1,
+                  minWidth:'fit-content',
+                  pr: 2
+                }}>
+                  {inf.icon}
+                  <Typography>{inf.key}</Typography>
+                </Box>
+              </>
+            )
+
+          })}
 
         </Container>
       </Paper>

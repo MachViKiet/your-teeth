@@ -75,6 +75,8 @@ function LogInForm() {
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
+          component={RouterLink}
+          to="/your-teeth/Dashboard"
         >
                 Sign In
         </Button>

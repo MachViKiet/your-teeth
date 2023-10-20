@@ -93,6 +93,8 @@ function RegisterForm() {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
+            component={RouterLink}
+            to="/LogIn"
           >
             Sign Up
           </Button>

@@ -67,8 +67,8 @@ function Slider() {
 
       <Box sx = {{
         position: 'absolute',
-        top: '60px', width: '100%',
-        height: 'calc(100% - 100px)',
+        top: '0', width: '100%',
+        height: 'calc(100%)',
         display:'flex',
         alignItems:'center'
       }}>
