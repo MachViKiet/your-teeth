@@ -1,8 +1,8 @@
 import { Box } from '@mui/material'
 
-import Header from './Header/Header'
+import Header from '~/components/Home/Header/Header'
 import Slider from './Slider/Slider'
-import Dentists from './Dentists/Dentists'
+// import Dentists from './Dentists/Dentists'
 
 function Home() {
   return (
@@ -16,7 +16,7 @@ function Home() {
 
       <Slider/>
 
-      <Dentists/>
+      {/* <Dentists/> */}
     </Box>
   )
 }

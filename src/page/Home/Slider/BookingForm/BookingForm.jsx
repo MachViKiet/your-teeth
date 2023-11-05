@@ -109,19 +109,17 @@ function BookingForm(progs) {
           />
         </Box>
 
-        <Box sx = {{ width: '100%', gap : 2 }}>
-          <FormControl>
-            <FormLabel id="demo-radio-buttons-group-label">Have You Visited Our Dental Clinic Before ?</FormLabel>
-            <RadioGroup
-              aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="female"
-              name="radio-buttons-group"
-            >
-              <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-              <FormControlLabel value="No" control={<Radio />} label="No" />
-            </RadioGroup>
-          </FormControl>
-        </Box>
+        <FormControl>
+          <FormLabel id="demo-radio-buttons-group-label">Have You Visited Our Dental Clinic Before ?</FormLabel>
+          <RadioGroup
+            aria-labelledby="demo-radio-buttons-group-label"
+            defaultValue="female"
+            name="radio-buttons-group"
+          >
+            <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+            <FormControlLabel value="No" control={<Radio />} label="No" />
+          </RadioGroup>
+        </FormControl>
 
       </DialogContent>
 

@@ -1,100 +1,57 @@
-// import Container from '@mui/material/Container'
-import Box from '@mui/material/Box'
+
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
-import { styled } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
 import Grid from '@mui/material/Grid'
-import CardMedia from '@mui/material/CardMedia'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import Tooltip from '@mui/material/Tooltip'
+import IconButton from '@mui/material/IconButton'
+import SearchIcon from '@mui/icons-material/Search'
+import RefreshIcon from '@mui/icons-material/Refresh'
 
-
-import Accordion from '@mui/material/Accordion'
-import AccordionSummary from '@mui/material/AccordionSummary'
-import AccordionDetails from '@mui/material/AccordionDetails'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-
-import BasicTabs from './Tab/Tab'
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary
-}))
-
-function Content() {
+export default function Content() {
   return (
-    <>
-      <Box sx={{ flexGrow: 1, mt: 1 }}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md= {4}>
-            <Item sx = {{
-              width: '100%',
-              height: '100%'
-            }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="fit-content"
-                image="https://media.istockphoto.com/id/1470505351/photo/portrait-of-a-smiling-doctor-holding-glasses-and-a-mobile-phone-at-the-office.webp?b=1&s=170667a&w=0&k=20&c=8CebFLF4PFnt9JYJznGhYoOQxcyHLVpTGVfkvEsZd2Q="
+    <Paper sx={{ maxWidth: 936, margin: 'auto', overflow: 'hidden' }}>
+      <AppBar
+        position='static'
+        color='default'
+        elevation={0}
+        sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}
+      >
+        <Toolbar>
+          <Grid container spacing={2} alignItems='center'>
+            <Grid item>
+              <SearchIcon color='inherit' sx={{ display: 'block' }} />
+            </Grid>
+            <Grid item xs>
+              <TextField
+                fullWidth
+                placeholder='Search by email address, phone number, or user UID'
+                InputProps={{
+                  disableUnderline: true,
+                  sx: { fontSize: 'default' }
+                }}
+                variant='standard'
               />
-              <Accordion>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                >
-                  <Typography>Accordion 1</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-              <Accordion>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel2a-content"
-                  id="panel2a-header"
-                >
-                  <Typography>Accordion 2</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-              <Accordion>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel3a-content"
-                  id="panel3a-header"
-                >
-                  <Typography>Accordion 3</Typography>
-                </AccordionSummary>
-              </Accordion>
-
-            </Item>
+            </Grid>
+            <Grid item>
+              <Button variant='contained' sx={{ mr: 1 }}>
+                Add user
+              </Button>
+              <Tooltip title='Reload'>
+                <IconButton>
+                  <RefreshIcon color='inherit' sx={{ display: 'block' }} />
+                </IconButton>
+              </Tooltip>
+            </Grid>
           </Grid>
-
-          <Grid item xs={12} md={8}>
-            <Item sx = {{
-              width: '100%',
-              height: '500px'
-            }}>
-
-              <BasicTabs/>
-
-            </Item>
-          </Grid>
-        </Grid>
-      </Box>
-    </>
+        </Toolbar>
+      </AppBar>
+      <Typography sx={{ my: 5, mx: 2 }} color='text.secondary' align='center'>
+        No users for this project yet
+      </Typography>
+    </Paper>
   )
 }
-
-export default Content

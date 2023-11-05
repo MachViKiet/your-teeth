@@ -12,6 +12,7 @@ import BusinessIcon from '@mui/icons-material/Business'
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone'
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid'
 import { Link as RouterLink } from 'react-router-dom'
+import React from 'react'
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -151,10 +152,10 @@ function Header() {
             { key: 'Home phone', icon: <LocalPhoneIcon /> },
             { key: 'University of Science', icon: <SchoolIcon /> },
             { key: '50/hour', icon: <AttachMoneyIcon /> },
-            { key: '35, Nguyen Van Cu', icon: <BusinessIcon /> }].map((inf) => {
+            { key: '35, Nguyen Van Cu', icon: <BusinessIcon /> }].map((inf, index) => {
 
             return (
-              <>
+              <React.Fragment key={index}>
                 <Box sx ={{
                   display:'flex',
                   alignItems:'center',
@@ -165,7 +166,7 @@ function Header() {
                   {inf.icon}
                   <Typography>{inf.key}</Typography>
                 </Box>
-              </>
+              </React.Fragment>
             )
 
           })}

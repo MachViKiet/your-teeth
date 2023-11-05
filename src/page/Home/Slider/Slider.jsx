@@ -25,7 +25,7 @@ const STYLE_ICON = {
 const STYLE_BUTTON = {
   '&.MuiButtonBase-root':{
     color: '#4e8876',
-    border: '1px solid #4e8876',
+    border: '1px solid #3ce2ad',
     fontWeight: '550',
     padding: '10px 20px'
   }

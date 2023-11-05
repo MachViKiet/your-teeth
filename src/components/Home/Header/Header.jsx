@@ -5,7 +5,7 @@ import Button from '@mui/material/Button'
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined'
 import { Link as RouterLink } from 'react-router-dom'
 import Logo from '~/components/Logo'
-import SlideDrawer from '~/components/Home/SlideBar/SlideDrawer'
+// import SlideDrawer from '~/components/Home/SlideBar/SlideDrawer'
 
 const STYLE_BUTTON = {
   color: '#000',
@@ -83,7 +83,7 @@ function Header() {
 
           <Button
             component={RouterLink}
-            to="/LogIn"
+            to="/your-teeth/login/"
             sx = {{
               textTransform: 'capitalize',
               minWidth: '90px',
@@ -103,7 +103,6 @@ function Header() {
 
         </Box>
 
-        <SlideDrawer />
 
       </Container>
 

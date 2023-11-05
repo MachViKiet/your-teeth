@@ -23,12 +23,21 @@ function RegisterForm() {
     })
   }
   return (
-    <Container component="main" maxWidth="sx" sx = {{ pt: 8 }}>
+    <Container component="main" maxWidth="sx" sx = {{ pt: 8, display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center' }}>
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center'
+          alignItems: 'center',
+          maxWidth: '500px',
+          pt: 6,
+          pb: 6,
+          pl: 4,
+          pr: 4,
+          borderRadius: '10px',
+          bgcolor: 'rgba(255,255,255,0.9)'
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -100,7 +109,7 @@ function RegisterForm() {
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link component={RouterLink} to="/LogIn">
+              <Link component={RouterLink} to="/your-teeth/login/">
                 Already have an account ?
               </Link>
             </Grid>

@@ -76,18 +76,18 @@ function LogInForm() {
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
           component={RouterLink}
-          to="/your-teeth/Dashboard"
+          to="/your-teeth/admin/dashboard"
         >
                 Sign In
         </Button>
         <Grid container>
           <Grid item xs>
-            <Link component={RouterLink} to="/your-teeth">
+            <Link component={RouterLink} to="/your-teeth/">
                     Back
             </Link>
           </Grid>
           <Grid item>
-            <Link component={RouterLink} to="/Register">
+            <Link component={RouterLink} to="/your-teeth/register/">
             Don't have an account ?
             </Link>
           </Grid>
