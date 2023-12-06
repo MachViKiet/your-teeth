@@ -38,7 +38,7 @@ export default function Navigator(props) {
 
   const ClickHandle = (C_index, P_index) => {
     SetIsActive([C_index, P_index])
-    navigate(`/your-teeth/${props.userInf.role}/${props.userInf.id}` + categories[C_index].children[P_index].link)
+    navigate(`/your-teeth/${props.userInf.role}` + categories[C_index].children[P_index].link)
   }
 
   return (

@@ -12,7 +12,6 @@ import Grid from '@mui/material/Unstable_Grid2'
 import TextField from '@mui/material/TextField'
 import { useEffect, useState } from 'react'
 import { userControl as UserAPI } from '~/apis/User/User'
-import { accountControl as AccountAPT } from '~/apis/User/Account'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -23,7 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }))
 
 const maleAvatar = 'https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png'
-const femaleAvatar = 'https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png'
+const femaleAvatar = 'https://img.freepik.com/premium-vector/avatar-female-doctor-with-black-hair-doctor-with-stethoscope-vector-illustrationxa_276184-33.jpg?w=2000'
 
 
 function Home(progs) {
@@ -48,7 +47,6 @@ function Home(progs) {
 
   useEffect(() => {
     const res = UserAPI.getUser(user?.id)
-    const res_account = AccountAPT.getAccount(user?.id)
 
     if (res.status == 'OK') {
       setFirstname(res.data.firstname)
@@ -59,17 +57,15 @@ function Home(progs) {
       setAddress(res.data.address)
       setBanking(res.data.IDbanking)
       setDesc(res.data.desc)
-      setAvatar(res.data.avartar)
+      setAvatar(res.data.avatar)
       setSex(res.data.sex)
-    }
-
-    if ( res_account.status == 'OK' ) {
-      setRole(res_account.data.role == 'staff'? 'Nhân viên' :
-        (res_account.data.role == 'dentist'? 'Nha sĩ' :
-          (res_account.data.role == 'admin'? 'Quản trị viên' : '')
+      setRole(res.data.role == 'staff'? 'Nhân viên' :
+        (res.data.role == 'dentist'? 'Nha sĩ' :
+          (res.data.role == 'admin'? 'Quản trị viên' : '')
         )
       )
     }
+
 
   }, [user?.id, user?.role])
 

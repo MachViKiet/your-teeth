@@ -8,6 +8,7 @@ import appointment from '~/page/Dashboard/Content/Appointment/Appointment'
 import Service from '~/page/Dashboard/Content/Service/Service'
 import BookingList from '~/page/Dashboard/Content/BookingList/BookingList'
 import Medicine from '~/page/Dashboard/Content/Medicine/Medicine'
+import Room from '~/page/Dashboard/Content/Room/Room'
 
 import PeopleIcon from '@mui/icons-material/People'
 import TimerIcon from '@mui/icons-material/Timer'
@@ -41,10 +42,10 @@ const AdminCategory = [
     id: 'Quản lí bệnh nhân',
     role: 'admin',
     children: [
-      { id: 'Hồ sơ bệnh nhân', icon: <PeopleIcon />, link: '/patient_record/' },
-      { id: 'Đặt lịch hẹn', icon: <CalendarMonthIcon />, link: '/bookinglist/' },
-      { id: 'Dịch vụ / tư vấn', icon: <SupportAgentIcon />, link: '/service/' },
-      { id: 'Phòng khám', icon: <MedicalInformationIcon />, link: '/room/' }
+      { id: 'Hồ sơ bệnh nhân', icon: <PeopleIcon />, link: '/patient_record' },
+      { id: 'Đặt lịch hẹn', icon: <CalendarMonthIcon />, link: '/bookinglist' },
+      { id: 'Dịch vụ / tư vấn', icon: <SupportAgentIcon />, link: '/service' },
+      { id: 'Phòng khám', icon: <MedicalInformationIcon />, link: '/room' }
     ]
   },
   {
@@ -58,8 +59,8 @@ const AdminCategory = [
     id: 'Quản lý hệ thống',
     role: 'admin',
     children: [
-      { id: 'Nha sĩ', icon: <AssignmentIndIcon />, link: '/dentist' },
-      { id: 'Nhân viên', icon: <AccountBoxIcon />, link: '/staff' },
+      { id: 'Nha sĩ', icon: <AssignmentIndIcon />, link: '/dentist_management' },
+      { id: 'Nhân viên', icon: <AccountBoxIcon />, link: '/staff_management' },
       { id: 'Lịch làm việc', icon: <EditCalendarIcon />, link: '/scheduler' }
     ]
   },
@@ -74,16 +75,16 @@ const AdminCategory = [
     id: 'Thống kê danh sách',
     role: 'admin',
     children: [
-      { id: 'Kế hoạch điều trị', icon: <AccessibilityIcon />, link: '/Patient_Report' },
-      { id: 'Thống kê lịch hẹn', icon: <TimerIcon />, link: '/Appointment_Report' }
+      { id: 'Kế hoạch điều trị', icon: <AccessibilityIcon />, link: '/patient_report' },
+      { id: 'Thống kê lịch hẹn', icon: <TimerIcon />, link: '/appointment_report' }
     ]
   },
   {
     id: 'Quản lí hóa đơn',
     role: 'admin',
     children: [
-      { id: 'Thanh toán', icon: <AddCardIcon />, link: '/Patient_Report' },
-      { id: 'Doanh thu', icon: <AttachMoneyIcon />, link: '/Appointment_Report' }
+      { id: 'Thanh toán', icon: <AddCardIcon />, link: '/debt_report' },
+      { id: 'Doanh thu', icon: <AttachMoneyIcon />, link: '/income_report' }
     ]
   }
 ]
@@ -91,15 +92,7 @@ const AdminCategory = [
 const AdminPath = [
   {
     // Trang Hoạt động chính
-    path: '/your-teeth/admin/:id/',
-    content: [
-
-    ],
-    layout: DashboardLayout
-  },
-  {
-    // Trang Hoạt động chính
-    path: '/your-teeth/admin/:id/dashboard/',
+    path: '/your-teeth/admin/dashboard/',
     content: [
       Home
     ],
@@ -107,7 +100,7 @@ const AdminPath = [
   },
   {
     // Trang quản lí khách hàng
-    path: '/your-teeth/admin/:id/patient_record',
+    path: '/your-teeth/admin/patient_record',
     content: [
       Manage
     ],
@@ -115,7 +108,7 @@ const AdminPath = [
   },
   {
     // Trang quản lí lịch hẹn
-    path: '/your-teeth/admin/:id/bookinglist',
+    path: '/your-teeth/admin/bookinglist',
     content: [
       BookingList
     ],
@@ -123,7 +116,7 @@ const AdminPath = [
   },
   {
     // Trang quản lý dịch vụ
-    path: '/your-teeth/admin/:id/service',
+    path: '/your-teeth/admin/service',
     content: [
       Service
     ],
@@ -131,7 +124,31 @@ const AdminPath = [
   },
   {
     // Trang quản lý dịch vụ
-    path: '/your-teeth/admin/:id/appointment',
+    path: '/your-teeth/admin/room',
+    content: [
+      Room
+    ],
+    layout: DashboardLayout
+  },
+  {
+    // Trang quản lý dịch vụ
+    path: '/your-teeth/admin/dentist_management',
+    content: [
+      Service
+    ],
+    layout: DashboardLayout
+  },
+  {
+    // Trang quản lý dịch vụ
+    path: '/your-teeth/admin/staff_management',
+    content: [
+      Service
+    ],
+    layout: DashboardLayout
+  },
+  {
+    // Trang quản lý dịch vụ
+    path: '/your-teeth/admin/appointment',
     content: [
       appointment
     ],
@@ -139,7 +156,7 @@ const AdminPath = [
   },
   {
     // Trang quản lý dịch vụ
-    path: '/your-teeth/admin/:id/medicine',
+    path: '/your-teeth/admin/medicine',
     content: [
       Medicine
     ],

@@ -30,7 +30,7 @@ const DentistCategory = [
       {
         id: 'Lịch làm việc',
         icon: <TimerIcon />,
-        link: '/Scheduler'
+        link: '/scheduler'
       }
     ]
   },
@@ -62,15 +62,15 @@ const DentistCategory = [
 const DentistPath = [
   {
     // Trang Hoạt động chính
-    path: '/your-teeth/dentist/:id/',
+    path: '/your-teeth/dentist/dashboard/',
     content: [
-
+      Home
     ],
     layout: DashboardLayout
   },
   {
     // Trang Hoạt động chính
-    path: '/your-teeth/dentist/:id/dashboard/',
+    path: '/your-teeth/dentist/scheduler/',
     content: [
       Home
     ],
@@ -78,7 +78,7 @@ const DentistPath = [
   },
   {
     // Trang quản lí khách hàng
-    path: '/your-teeth/dentist/:id/patient_record',
+    path: '/your-teeth/dentist/patient_record',
     content: [
       Manage
     ],
@@ -86,7 +86,7 @@ const DentistPath = [
   },
   {
     // Trang quản lí lịch hẹn
-    path: '/your-teeth/dentist/:id/bookinglist',
+    path: '/your-teeth/dentist/bookinglist',
     content: [
       BookingList
     ],
@@ -94,7 +94,7 @@ const DentistPath = [
   },
   {
     // Trang quản lý dịch vụ
-    path: '/your-teeth/dentist/:id/service',
+    path: '/your-teeth/dentist/service',
     content: [
       Service
     ],
@@ -102,7 +102,7 @@ const DentistPath = [
   },
   {
     // Trang quản lý dịch vụ
-    path: '/your-teeth/dentist/:id/appointment',
+    path: '/your-teeth/dentist/appointment',
     content: [
       appointment
     ],
@@ -110,7 +110,7 @@ const DentistPath = [
   },
   {
     // Trang quản lý dịch vụ
-    path: '/your-teeth/dentist/:id/medicine',
+    path: '/your-teeth/dentist/medicine',
     content: [
       Medicine
     ],

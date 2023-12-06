@@ -9,7 +9,7 @@ import { Divider } from '@mui/material'
 import { useEffect, useState } from 'react'
 
 // API
-import { ServiceControl } from '~/apis/Service/Service'
+import { RoomControl } from '~/apis/Room/Room'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -19,21 +19,22 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary
 }))
 
-const Service = () => {
-  const [service, setService] = useState([])
+const Room = () => {
+  const [room, setRoom] = useState([])
   const [openDialog, setOpenDialog] = useState(false)
-  const [editService, setEditService] = useState(null)
-  const [newService, setNewService] = useState({
+  const [editRoom, setEditRoom] = useState(null)
+  const [newRoom, setNewRoom] = useState({
     id: Date.now(),
-    serviceName: '',
-    description: '',
-    status: true,
-    unitPrice: ''
+    name: '',
+    dentist : '',
+    assistance: '',
+    status : true,
+    count: 0
   })
 
   useEffect(() => {
-    const services = ServiceControl.getAllService().data
-    services && setService(services)
+    const room = RoomControl.getAllRoom().data
+    room && setRoom(room)
   }, [])
 
   const handleOpenDialog = () => {
@@ -42,71 +43,51 @@ const Service = () => {
 
   const handleCloseDialog = () => {
     setOpenDialog(false)
-    setEditService(null)
-    setNewService({
+    setEditRoom(null)
+    setNewRoom({
       id: Date.now(),
-      serviceName: '',
-      description: '',
-      status: true,
-      unitPrice : ''
+      name: '',
+      dentist : '',
+      assistance: '',
+      status : true,
+      count: 0
     })
   }
 
   const handleAddAppointment = () => {
-    if (editService) {
-      // Edit existing service
-      const updatedService = service.map((service) =>
-        service.id === editService.id ? newService : service
+    if (editRoom) {
+      // Edit existing room
+      const updatedRoom = room.map((room) =>
+        room.id === editRoom.id ? newRoom : room
       )
-      setService(updatedService)
+      setRoom(updatedRoom)
     } else {
-      // Add new service
-      setService([...service, newService])
+      // Add new room
+      setRoom([...room, newRoom])
     }
 
     handleCloseDialog()
   }
 
-  const handleEditAppointment = (service) => {
-    setEditService(service)
-    setNewService(service)
+  const handleEditRoom = (room) => {
+    setEditRoom(room)
+    setNewRoom(room)
     handleOpenDialog()
   }
 
-  const handleDeleteAppointment = (id) => {
-    const updatedService = service.filter((service) => service.id !== id)
-    setService(updatedService)
+  const handleDeleteRoom = (id) => {
+    const updatedRoom = room.filter((room) => room.id !== id)
+    setRoom(updatedRoom)
   }
-
-  // Thêm state cho bộ lọc
-  const [filter] = useState({
-    patient: '',
-    room: '',
-    description: ''
-  })
-
-  // Hàm lọc danh sách cuộc hẹn
-  const filteredAppointments = service.filter((service) => {
-    const patientMatch = service.serviceName.toLowerCase().includes(filter.patient.toLowerCase())
-    const roomMatch = filter.room === '' || service.room.toLowerCase() === filter.room.toLowerCase()
-    const dentistMatch = filter.description === '' || service.description.toLowerCase() === filter.description.toLowerCase()
-
-    return patientMatch && roomMatch && dentistMatch
-  })
-
-  // // Hàm xử lý thay đổi bộ lọc
-  // const handleFilterChange = (field, value) => {
-  //   setFilter({ ...filter, [field]: value })
-  // }
 
   return (
     <div>
       <Button sx={{ mb: 2 }} variant="contained" color="primary" startIcon={<AddIcon />} onClick={handleOpenDialog}>
-        Add New Service
+        Add New Room
       </Button>
 
       <Dialog open={openDialog} onClose={handleCloseDialog}>
-        <DialogTitle>{editService ? 'Chỉnh sửa lịch hẹn' : 'Thêm lịch hẹn mới'}</DialogTitle>
+        <DialogTitle>{editRoom ? 'Chỉnh sửa lịch hẹn' : 'Thêm lịch hẹn mới'}</DialogTitle>
         <DialogContent sx = {{
           width: '95vw',
           maxWidth: '500px'
@@ -120,9 +101,9 @@ const Service = () => {
                 width: '100%'
               }
             }}
-            label="Tên dịch vụ"
-            value={newService.serviceName}
-            onChange={(e) => setNewService({ ...newService, serviceName: e.target.value })}
+            label="Tên phòng"
+            value={newRoom.name}
+            onChange={(e) => setNewRoom({ ...newRoom, name: e.target.value })}
           />
           <TextField
             sx = {{
@@ -133,9 +114,9 @@ const Service = () => {
                 width: '100%'
               }
             }}
-            label="Mô tả dịch vụ"
-            value={newService.description}
-            onChange={(e) => setNewService({ ...newService, description: e.target.value })}
+            label="Bác sĩ phụ trách"
+            value={newRoom.dentist}
+            onChange={(e) => setNewRoom({ ...newRoom, dentist: e.target.value })}
           />
           <TextField
             sx = {{
@@ -146,19 +127,32 @@ const Service = () => {
                 width: '100%'
               }
             }}
-            label="Đơn giá"
-            value={newService.unitPrice}
-            onChange={(e) => setNewService({ ...newService, unitPrice: e.target.value })}
+            label="Phụ khám"
+            value={newRoom.assistance}
+            onChange={(e) => setNewRoom({ ...newRoom, status: e.target.value })}
+          />
+          <TextField
+            sx = {{
+              my: 1,
+              display: 'block',
+              width: '100%',
+              '& .MuiInputBase-root':{
+                width: '100%'
+              }
+            }}
+            label="Số thứ tự"
+            value={newRoom.count}
+            onChange={(e) => setNewRoom({ ...newRoom, count: e.target.value })}
           />
 
           <FormControl sx = {{ display: 'flex', my: 1 }}>
             {/* <InputLabel>Status</InputLabel> */}
             <Select
-              value={newService.status}
-              onChange={(e) => setNewService({ ...newService, status: e.target.value })}
+              value={newRoom.status}
+              onChange={(e) => setNewRoom({ ...newRoom, status: e.target.value })}
             >
-              <MenuItem value="Đang hoạt đông">Mở</MenuItem>
-              <MenuItem value="Tạm ngưng"> Đóng</MenuItem>
+              <MenuItem value="Tạm đóng">Đóng phòng</MenuItem>
+              <MenuItem value="Đang hoạt động">Mở phòng</MenuItem>
               {/* Add more status options as needed */}
             </Select>
           </FormControl>
@@ -168,7 +162,7 @@ const Service = () => {
             justifyContent: 'end'
           }}>
             <Button sx = {{ minWidth: '90px', py: 1, mt: 1 }} variant="contained" color="primary" onClick={handleAddAppointment}>
-              {editService ? 'Chỉnh sửa' : 'Thêm'}
+              {editRoom ? 'Chỉnh sửa' : 'Thêm'}
             </Button>
           </Box>
 
@@ -209,24 +203,26 @@ const Service = () => {
               <Table>
                 <TableHead>
                   <TableRow>
-                    <TableCell sx = {{ fontWeight: '600' }}>Tên dịch vụ</TableCell>
-                    <TableCell sx = {{ fontWeight: '600', maxWidth: '500px' }}>Mô tả</TableCell>
+                    <TableCell sx = {{ fontWeight: '600' }}>Tên</TableCell>
+                    <TableCell sx = {{ fontWeight: '600', maxWidth: '500px' }}>Bác sĩ phụ trách</TableCell>
+                    <TableCell sx = {{ fontWeight: '600' }}>Trợ khám</TableCell>
                     <TableCell sx = {{ fontWeight: '600' }}>Trạng thái</TableCell>
-                    <TableCell sx = {{ fontWeight: '600' }}>Đơn giá</TableCell>
+                    <TableCell sx = {{ fontWeight: '600' }}>Số thứ tự</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {filteredAppointments.map((service) => (
-                    <TableRow key={service.id}>
-                      <TableCell>{service.serviceName}</TableCell>
-                      <TableCell sx = {{ maxWidth: '500px' }}>{service.description}</TableCell>
-                      <TableCell sx = {{ color: service.status ? 'green' : 'red' }}>{ service.status ? 'Đang hoạt đông' : 'Tạm khóa' }</TableCell>
-                      <TableCell>{service.unitPrice}</TableCell>
+                  {room.map((room) => (
+                    <TableRow key={room.id}>
+                      <TableCell>{room.name}</TableCell>
+                      <TableCell>{room.dentist}</TableCell>
+                      <TableCell>{room.assistance}</TableCell>
+                      <TableCell sx = {{ color: room.status ? 'green' : 'red' }}>{ room.status ? 'Đang hoạt đông' : 'Tạm đóng' }</TableCell>
+                      <TableCell>{room.count}</TableCell>
                       <TableCell>
-                        <IconButton color="primary" onClick={() => handleEditAppointment(service)}>
+                        <IconButton color="primary" onClick={() => handleEditRoom(room)}>
                           <EditIcon />
                         </IconButton>
-                        <IconButton color="secondary" onClick={() => handleDeleteAppointment(service.id)}>
+                        <IconButton color="secondary" onClick={() => handleDeleteRoom(room.id)}>
                           <DeleteIcon />
                         </IconButton>
                       </TableCell>
@@ -245,4 +241,4 @@ const Service = () => {
   )
 }
 
-export default Service
+export default Room

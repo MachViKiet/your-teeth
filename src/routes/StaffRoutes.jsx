@@ -51,7 +51,7 @@ const StaffCategory = [
     id: 'Quản lí hóa đơn',
     role: 'Staff',
     children: [
-      { id: 'Thanh toán', icon: <AddCardIcon />, link: '/Patient_Report' }
+      { id: 'Thanh toán', icon: <AddCardIcon />, link: '/patient_report' }
     ]
   }
 ]
@@ -59,7 +59,7 @@ const StaffCategory = [
 const StaffPath = [
   {
     // Trang Hoạt động chính
-    path: '/your-teeth/Staff/:id/',
+    path: '/your-teeth/Staff/',
     content: [
 
     ],
@@ -67,7 +67,7 @@ const StaffPath = [
   },
   {
     // Trang Hoạt động chính
-    path: '/your-teeth/Staff/:id/dashboard/',
+    path: '/your-teeth/Staff/dashboard/',
     content: [
       Home
     ],
@@ -75,7 +75,23 @@ const StaffPath = [
   },
   {
     // Trang quản lí khách hàng
-    path: '/your-teeth/Staff/:id/patient_record',
+    path: '/your-teeth/Staff/patient_record',
+    content: [
+      Manage
+    ],
+    layout: DashboardLayout
+  },
+  {
+    // Trang quản lí phòng
+    path: '/your-teeth/Staff/room',
+    content: [
+      Manage
+    ],
+    layout: DashboardLayout
+  },
+  {
+    // Trang quản lí thống kê
+    path: '/your-teeth/Staff/patient_report',
     content: [
       Manage
     ],
@@ -83,7 +99,7 @@ const StaffPath = [
   },
   {
     // Trang quản lí lịch hẹn
-    path: '/your-teeth/Staff/:id/bookinglist',
+    path: '/your-teeth/Staff/bookinglist',
     content: [
       BookingList
     ],
@@ -91,7 +107,7 @@ const StaffPath = [
   },
   {
     // Trang quản lý dịch vụ
-    path: '/your-teeth/Staff/:id/service',
+    path: '/your-teeth/Staff/service',
     content: [
       Service
     ],
@@ -99,7 +115,7 @@ const StaffPath = [
   },
   {
     // Trang quản lý dịch vụ
-    path: '/your-teeth/Staff/:id/appointment',
+    path: '/your-teeth/Staff/appointment',
     content: [
       appointment
     ],
@@ -107,7 +123,7 @@ const StaffPath = [
   },
   {
     // Trang quản lý dịch vụ
-    path: '/your-teeth/Staff/:id/medicine',
+    path: '/your-teeth/Staff/medicine',
     content: [
       Medicine
     ],

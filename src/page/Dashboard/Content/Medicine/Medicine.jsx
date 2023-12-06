@@ -29,22 +29,9 @@ const style = {
 
 
 function Medicine() {
+
   return (
     <>
-      {/* <div>
-        <h1>Quản lí hồ sơ bệnh nhân</h1>
-        <ul>
-        1. Giao diện:
-          <li>Hiển thị danh sách bệnh nhân</li>
-          <li>Tìm kiếm bệnh nhân theo tên/ năm sinh</li>
-        </ul>
-        <ul>
-        2. Chức năng:
-          <li>Nút nhấn xem hồ sơ bệnh nhân </li>
-          <li>Nút thêm hồ sơ bệnh nhân </li>
-        </ul>
-      </div> */}
-
       <Box>
         <Typography variant='h5' sx = {{
           color: '#000',

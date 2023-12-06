@@ -32,7 +32,7 @@ function LogInForm(progs) {
 
     if ( res.status == 'OK') {
       progs.control.login(res.data)
-      navigate(`/your-teeth/${res.data.role}/${res.data.id}/dashboard`)
+      navigate(`/your-teeth/${res.data.role}/dashboard`)
     }
     else {
       alert('Tên đăng nhập hoặc mật khẩu không đúng')

@@ -13,6 +13,9 @@ import { Divider } from '@mui/material'
 import CreateIcon from '@mui/icons-material/Create'
 import DeleteIcon from '@mui/icons-material/Delete'
 
+import { PatientControl } from '~/apis/Patient/Patient'
+import { useEffect, useState } from 'react'
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -29,6 +32,14 @@ const style = {
 
 
 function Manage() {
+
+  const [INFORMATION, setINFORMATION] = useState([])
+
+  useEffect(() => {
+    const patient_record = PatientControl.getAllPatient_Record()
+    patient_record && setINFORMATION(patient_record.data)
+  }, [])
+
   return (
     <>
       {/* Title */}
@@ -76,13 +87,13 @@ function Manage() {
                 width: 'fit-content',
                 px: 2
               }}>
-                <Typography variant='body2' sx = {{ minWidth: '30px' }}>STT</Typography>
+                <Typography variant='body2' sx = {{ minWidth: '30px', fontWeight: '600' }}>STT</Typography>
                 <Divider sx={{ height: 28, m: 0.5, mx: 2 }} orientation="vertical" />
-                <Typography sx = {{ minWidth: '280px' }}>Họ và Tên</Typography>
+                <Typography sx = {{ minWidth: '280px', fontWeight: '600' }}>Họ và Tên</Typography>
                 <Divider sx={{ height: 28, m: 0.5, mx: 2 }} orientation="vertical" />
-                <Typography sx = {{ minWidth: '200px' }} >Ngày Sinh</Typography>
+                <Typography sx = {{ minWidth: '200px', fontWeight: '600' }} >Ngày Sinh</Typography>
                 <Divider sx={{ height: 28, m: 0.5, mx: 2 }} orientation="vertical" />
-                <Typography sx = {{ minWidth: '250px' }} >Quê quán</Typography>
+                <Typography sx = {{ minWidth: '250px', fontWeight: '600' }} >Quê quán</Typography>
               </Box>
 
               {/* Hồ sơ bệnh nhân */}
@@ -139,245 +150,3 @@ function Manage() {
 
 export default Manage
 
-const INFORMATION = [
-  {
-    name: 'Mạch Vĩ Kiệt',
-    birth: '25/07/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Xuân Lộc',
-    birth: '00/00/2003',
-    country: 'Bình Định'
-  },
-  {
-    name: 'Quí Hòa',
-    birth: '00/00/2003',
-    country: 'Đồng Nai'
-  },
-  {
-    name: 'Minh Quang',
-    birth: '00/00/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Mạch Vĩ Kiệt',
-    birth: '25/07/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Xuân Lộc',
-    birth: '00/00/2003',
-    country: 'Bình Định'
-  },
-  {
-    name: 'Quí Hòa',
-    birth: '00/00/2003',
-    country: 'Đồng Nai'
-  },
-  {
-    name: 'Minh Quang',
-    birth: '00/00/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Mạch Vĩ Kiệt',
-    birth: '25/07/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Xuân Lộc',
-    birth: '00/00/2003',
-    country: 'Bình Định'
-  },
-  {
-    name: 'Quí Hòa',
-    birth: '00/00/2003',
-    country: 'Đồng Nai'
-  },
-  {
-    name: 'Minh Quang',
-    birth: '00/00/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Mạch Vĩ Kiệt',
-    birth: '25/07/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Xuân Lộc',
-    birth: '00/00/2003',
-    country: 'Bình Định'
-  },
-  {
-    name: 'Quí Hòa',
-    birth: '00/00/2003',
-    country: 'Đồng Nai'
-  },
-  {
-    name: 'Minh Quang',
-    birth: '00/00/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Mạch Vĩ Kiệt',
-    birth: '25/07/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Xuân Lộc',
-    birth: '00/00/2003',
-    country: 'Bình Định'
-  },
-  {
-    name: 'Quí Hòa',
-    birth: '00/00/2003',
-    country: 'Đồng Nai'
-  },
-  {
-    name: 'Minh Quang',
-    birth: '00/00/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Mạch Vĩ Kiệt',
-    birth: '25/07/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Xuân Lộc',
-    birth: '00/00/2003',
-    country: 'Bình Định'
-  },
-  {
-    name: 'Quí Hòa',
-    birth: '00/00/2003',
-    country: 'Đồng Nai'
-  },
-  {
-    name: 'Minh Quang',
-    birth: '00/00/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Mạch Vĩ Kiệt',
-    birth: '25/07/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Xuân Lộc',
-    birth: '00/00/2003',
-    country: 'Bình Định'
-  },
-  {
-    name: 'Quí Hòa',
-    birth: '00/00/2003',
-    country: 'Đồng Nai'
-  },
-  {
-    name: 'Minh Quang',
-    birth: '00/00/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Mạch Vĩ Kiệt',
-    birth: '25/07/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Xuân Lộc',
-    birth: '00/00/2003',
-    country: 'Bình Định'
-  },
-  {
-    name: 'Quí Hòa',
-    birth: '00/00/2003',
-    country: 'Đồng Nai'
-  },
-  {
-    name: 'Minh Quang',
-    birth: '00/00/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Mạch Vĩ Kiệt',
-    birth: '25/07/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Xuân Lộc',
-    birth: '00/00/2003',
-    country: 'Bình Định'
-  },
-  {
-    name: 'Quí Hòa',
-    birth: '00/00/2003',
-    country: 'Đồng Nai'
-  },
-  {
-    name: 'Minh Quang',
-    birth: '00/00/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Mạch Vĩ Kiệt',
-    birth: '25/07/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Xuân Lộc',
-    birth: '00/00/2003',
-    country: 'Bình Định'
-  },
-  {
-    name: 'Quí Hòa',
-    birth: '00/00/2003',
-    country: 'Đồng Nai'
-  },
-  {
-    name: 'Minh Quang',
-    birth: '00/00/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Mạch Vĩ Kiệt',
-    birth: '25/07/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Xuân Lộc',
-    birth: '00/00/2003',
-    country: 'Bình Định'
-  },
-  {
-    name: 'Quí Hòa',
-    birth: '00/00/2003',
-    country: 'Đồng Nai'
-  },
-  {
-    name: 'Minh Quang',
-    birth: '00/00/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Mạch Vĩ Kiệt',
-    birth: '25/07/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  },
-  {
-    name: 'Xuân Lộc',
-    birth: '00/00/2003',
-    country: 'Bình Định'
-  },
-  {
-    name: 'Quí Hòa',
-    birth: '00/00/2003',
-    country: 'Đồng Nai'
-  },
-  {
-    name: 'Minh Quang',
-    birth: '00/00/2003',
-    country: 'Thành Phố Hồ Chí Minh'
-  }
-]
