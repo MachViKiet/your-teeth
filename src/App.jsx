@@ -6,7 +6,7 @@ import { Routes, Route } from 'react-router-dom'
 import { route } from '~/routes/routes'
 import { route as AdminRoutes } from '~/routes/AdminRoutes'
 import { route as StaffRoutes } from '~/routes/StaffRoutes'
-import { route as DentistRoutes } from '~/routes/dentistRoutes'
+import { route as DentistRoutes } from '~/routes/DentistRoutes'
 
 import React, { useEffect } from 'react'
 import { useState } from 'react'
