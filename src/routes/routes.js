@@ -3,7 +3,7 @@ import Slider from '~/page/Home/Slider/Slider'
 import LogInForm from '~/page/Auth/LogIn/LogInForm'
 import RegisterForm from '~/page/Auth/RegisterForm/RegisterForm'
 import AuthLayout from '~/layouts/AuthLayout/AuthLayout'
-import Paperbase from '~/page/Dashboard/Paperbase'
+
 
 const publicPath = [
   {
@@ -15,7 +15,7 @@ const publicPath = [
     layout: HomeLayout
   },
   {
-    // Trang chủ
+    // Trang đăng nhập
     path: '/your-teeth/login/',
     content: [
       LogInForm
@@ -23,19 +23,12 @@ const publicPath = [
     layout: AuthLayout
   },
   {
-    // Trang chủ
+    // Trang đăng kí
     path: '/your-teeth/register/',
     content: [
       RegisterForm
     ],
     layout: AuthLayout
-  },
-  {
-    // Trang chủ
-    path: '/your-teeth/:id/dashboard/',
-    content: [
-      Paperbase
-    ]
   }
 ]
 

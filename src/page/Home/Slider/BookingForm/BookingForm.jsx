@@ -17,7 +17,7 @@ function BookingForm(progs) {
   return (
     <Box sx = {{ minWidth: '600px', maxWidth: '600px', overflow: 'auto' }}>
       <DialogTitle sx={{ m: 0, p: 2, width: '100%' }} id="customized-dialog-title">
-        <Box sx = {{ display: 'flex', alignItems: 'center' }} gap = {2}>
+        <Box sx = {{ display: 'flex' }} gap = {2}>
           <Logo/>
           <Box sx = {{ width: '100%' }}>
             <Typography align = 'center' variant="h6" component="h2">

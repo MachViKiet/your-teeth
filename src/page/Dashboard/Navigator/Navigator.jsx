@@ -7,52 +7,8 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-import PeopleIcon from '@mui/icons-material/People'
-import DnsRoundedIcon from '@mui/icons-material/DnsRounded'
-import PermMediaOutlinedIcon from '@mui/icons-material/PhotoSizeSelectActual'
-import PublicIcon from '@mui/icons-material/Public'
-import SettingsEthernetIcon from '@mui/icons-material/SettingsEthernet'
-import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputComponent'
-import TimerIcon from '@mui/icons-material/Timer'
-import SettingsIcon from '@mui/icons-material/Settings'
-import PhonelinkSetupIcon from '@mui/icons-material/PhonelinkSetup'
-
-const categories = [
-  {
-    id: 'Admin',
-    children: [
-      {
-        id: 'Authentication',
-        icon: <PeopleIcon />,
-        active: true
-      },
-      { id: 'Database', icon: <DnsRoundedIcon /> },
-      { id: 'Storage', icon: <PermMediaOutlinedIcon /> },
-      { id: 'Hosting', icon: <PublicIcon /> },
-      { id: 'Functions', icon: <SettingsEthernetIcon /> },
-      {
-        id: 'Machine learning',
-        icon: <SettingsInputComponentIcon />
-      }
-    ]
-  },
-  {
-    id: 'Dentist',
-    children: [
-      { id: 'Analytics', icon: <SettingsIcon /> },
-      { id: 'Performance', icon: <TimerIcon /> },
-      { id: 'Test Lab', icon: <PhonelinkSetupIcon /> }
-    ]
-  },
-  {
-    id: 'Staff',
-    children: [
-      { id: 'Analytics', icon: <SettingsIcon /> },
-      { id: 'Performance', icon: <TimerIcon /> },
-      { id: 'Test Lab', icon: <PhonelinkSetupIcon /> }
-    ]
-  }
-]
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const item = {
   py: '2px',
@@ -66,13 +22,28 @@ const item = {
 
 const itemCategory = {
   boxShadow: '0 -1px 0 rgb(255,255,255,0.1) inset',
-  py: 1.5,
+  py: 2.5,
   px: 3
 }
 
 export default function Navigator(props) {
   const { ...other } = props
+
+  const categories = props.categories
+
+  const [isActive, SetIsActive] = useState([0, 0])
+
+  const navigate = useNavigate()
+
+
+  const ClickHandle = (C_index, P_index) => {
+    SetIsActive([C_index, P_index])
+    navigate(`/your-teeth/${props.userInf.role}/${props.userInf.id}` + categories[C_index].children[P_index].link)
+  }
+
   return (
+
+
     <Drawer variant="permanent" {...other}>
       <List disablePadding>
 
@@ -80,21 +51,15 @@ export default function Navigator(props) {
           Dashboard
         </ListItem>
 
-        {/* <ListItem sx={{ ...item, ...itemCategory }}>
-          <ListItemIcon>
-            <HomeIcon />
-          </ListItemIcon>
-          <ListItemText>Project Overview</ListItemText>
-        </ListItem> */}
-
-        {categories.map(({ id, children }) => (
+        {categories.map(({ id, children }, Pindex) => (
           <Box key={id} sx={{ bgcolor: '#101F33' }}>
             <ListItem sx={{ py: 2, px: 3 }}>
               <ListItemText sx={{ color: '#fff' }}>{id}</ListItemText>
             </ListItem>
-            {children.map(({ id: childId, icon, active }) => (
-              <ListItem disablePadding key={childId}>
-                <ListItemButton selected={active} sx={item}>
+            {children.map(({ id: childId, icon, active }, Cindex) => (
+              <ListItem disablePadding key={Cindex}>
+                {Pindex == isActive[0] && Cindex == isActive[1] ? active = true : active = false }
+                <ListItemButton selected={active} sx={item} onClick={() => ClickHandle(Pindex, Cindex)}>
                   <ListItemIcon>{icon}</ListItemIcon>
                   <ListItemText>{childId}</ListItemText>
                 </ListItemButton>

@@ -12,14 +12,31 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import { Link as RouterLink } from 'react-router-dom'
 
-function LogInForm() {
+import { auth as api } from '~/apis/Auth/Auth'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+function LogInForm(progs) {
+
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
+  const navigate = useNavigate()
+
   const handleSubmit = (event) => {
     event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    console.log({
-      email: data.get('email'),
-      password: data.get('password')
-    })
+
+    const res = api.login(username, password)
+
+    console.log(res)
+
+    if ( res.status == 'OK') {
+      progs.control.login(res.data)
+      navigate(`/your-teeth/${res.data.role}/${res.data.id}/dashboard`)
+    }
+    else {
+      alert('Tên đăng nhập hoặc mật khẩu không đúng')
+    }
   }
 
   return (
@@ -54,7 +71,9 @@ function LogInForm() {
           label="Email Address"
           name="email"
           autoComplete="email"
+          value={username}
           autoFocus
+          onChange={(e) => setUsername(e.target.value)}
         />
         <TextField
           margin="normal"
@@ -64,7 +83,9 @@ function LogInForm() {
           label="Password"
           type="password"
           id="password"
+          value={password}
           autoComplete="current-password"
+          onChange={(e) => setPassword(e.target.value)}
         />
         <FormControlLabel
           control={<Checkbox value="remember" color="primary" />}
@@ -76,7 +97,7 @@ function LogInForm() {
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
           component={RouterLink}
-          to="/your-teeth/admin/dashboard"
+          onClick={handleSubmit}
         >
                 Sign In
         </Button>

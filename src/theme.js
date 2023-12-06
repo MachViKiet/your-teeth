@@ -11,8 +11,8 @@ const theme = extendTheme({
     dark: {
 
     }
-  },
-  
+  }
+
   // ...other properties
 })
 
