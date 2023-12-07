@@ -9,6 +9,7 @@ import Service from '~/page/Dashboard/Content/Service/Service'
 import BookingList from '~/page/Dashboard/Content/BookingList/BookingList'
 import Medicine from '~/page/Dashboard/Content/Medicine/Medicine'
 import Room from '~/page/Dashboard/Content/Room/Room'
+import Scheduler from '../page/Dashboard/Content/Scheduler/Scheduler'
 
 import PeopleIcon from '@mui/icons-material/People'
 import TimerIcon from '@mui/icons-material/Timer'
@@ -151,6 +152,14 @@ const AdminPath = [
     path: '/your-teeth/admin/appointment',
     content: [
       appointment
+    ],
+    layout: DashboardLayout
+  },
+  {
+    // Trang quản lý dịch vụ
+    path: '/your-teeth/admin/scheduler',
+    content: [
+      Scheduler
     ],
     layout: DashboardLayout
   },

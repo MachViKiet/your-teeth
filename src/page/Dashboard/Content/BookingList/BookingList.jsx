@@ -49,7 +49,7 @@ const BookingList = () => {
     room: '',
     date: '',
     time: '',
-    status: ''
+    status: true
   })
 
   const handleOpenDialog = () => {
